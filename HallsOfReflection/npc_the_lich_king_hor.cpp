@@ -84,7 +84,7 @@ public:
                   return;
            _nonFight = false;
            _startEscort = false;
-           _walkSpeed = 1.2f; //Increase Speed because Lichi runs like Ugly old man (default: 1)
+           _walkSpeed = 1.0f;
            _wallEntry = 0;
        }
 

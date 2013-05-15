@@ -22,6 +22,14 @@
 #include "Player.h"
 
 
+
+/* Halls of Reflection encounters:
+0- Falric
+1- Marwyn
+2- The Lich King
+0- Escape
+*/
+
 enum eEnum
 {
     ENCOUNTER_WAVE_MERCENARY                      = 6,
@@ -341,13 +349,16 @@ public:
         void SetData(uint32 type, uint32 data)
         {
             if (type == DATA_WAVE_COUNT && data == SPECIAL)
-            {
-                  bIntroDone = true;
-                  CloseDoor(uiFrontDoor);
-                  CloseDoor(uiRunDoor);
-                  events.ScheduleEvent(EVENT_NEXT_WAVE, 9000);
-                return;
-            }
+    		{
+				uiWaveCount == 0;
+				bIntroDone = true;
+				CloseDoor(uiFrontDoor);
+				CloseDoor(uiRunDoor);
+				if(uiWaveCount == 0){
+					events.ScheduleEvent(EVENT_NEXT_WAVE, 9000);
+				}
+				return;
+			}
 
             if (uiWaveCount && data == NOT_STARTED)
                   DoWipe();
@@ -357,7 +368,7 @@ public:
                 case DATA_FALRIC_EVENT:
                     uiEncounter[0] = data;
                     if (data == DONE)
-                           events.ScheduleEvent(EVENT_NEXT_WAVE, 9000);
+                           events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
                     if (Creature* partner = instance->GetCreature(uiPartner2))
                            partner->SetVisible(false);
                     break;
@@ -562,31 +573,83 @@ public:
 
         void AddWave()
         {
-            DoUpdateWorldState(WORLD_STATE_HOR, 1);
-            DoUpdateWorldState(WORLD_STATE_HOR_WAVE_COUNT, uiWaveCount);
+			if(uiWaveCount <= 10){
+				DoUpdateWorldState(WORLD_STATE_HOR, 1);
+				DoUpdateWorldState(WORLD_STATE_HOR_WAVE_COUNT, uiWaveCount);
+			}
 
             switch (uiWaveCount)
             {
                 case 1:
+					if (Creature* falric = instance->GetCreature(uiFalric)){
+							events.CancelEvent(EVENT_NEXT_WAVE);
+							SpawnWave(falric);
+							events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
+							return;
+					}
+					break;
                 case 2:
+					if (Creature* falric = instance->GetCreature(uiFalric)){
+							events.CancelEvent(EVENT_NEXT_WAVE);
+							SpawnWave(falric);
+							events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
+							return;
+					}
+					break;
                 case 3:
+					if (Creature* falric = instance->GetCreature(uiFalric)){
+							events.CancelEvent(EVENT_NEXT_WAVE);
+							SpawnWave(falric);
+							events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
+							return;
+					}
+					break;
                 case 4:
-                    if (Creature* falric = instance->GetCreature(uiFalric))
-                           SpawnWave(falric);
-                    break;
+					if (Creature* falric = instance->GetCreature(uiFalric)){
+							events.CancelEvent(EVENT_NEXT_WAVE);
+							SpawnWave(falric);
+							events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
+							return;
+					}
+					break;
                 case 5:
                     if (GetData(DATA_FALRIC_EVENT) == DONE)
-                           events.ScheduleEvent(EVENT_NEXT_WAVE, 10000);
+                           events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
                     else if (Creature* falric = instance->GetCreature(uiFalric))
                          if (falric->AI())
                                 falric->AI()->DoAction(ACTION_ENTER_COMBAT);
                     break;
                 case 6:
+					if (Creature* marwyn  = instance->GetCreature(uiMarwyn)){
+							events.CancelEvent(EVENT_NEXT_WAVE);
+							SpawnWave(marwyn);
+							events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
+							return;
+					}
+                    break;
                 case 7:
+					if (Creature* marwyn  = instance->GetCreature(uiMarwyn)){
+							events.CancelEvent(EVENT_NEXT_WAVE);
+							SpawnWave(marwyn);
+							events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
+							return;
+					}
+                    break;
                 case 8:
+					if (Creature* marwyn  = instance->GetCreature(uiMarwyn)){
+							events.CancelEvent(EVENT_NEXT_WAVE);
+							SpawnWave(marwyn);
+							events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
+							return;
+					}
+                    break;
                 case 9:
-                    if (Creature* marwyn  = instance->GetCreature(uiMarwyn))
-                           SpawnWave(marwyn);
+					if (Creature* marwyn  = instance->GetCreature(uiMarwyn)){
+							events.CancelEvent(EVENT_NEXT_WAVE);
+							SpawnWave(marwyn);
+							events.ScheduleEvent(EVENT_NEXT_WAVE, 86000);
+							return;
+					}
                     break;
                 case 10:
                     if (GetData(DATA_MARWYN_EVENT) != DONE) // wave should not have been started if DONE. Check anyway to avoid bug exploit!
@@ -650,11 +713,12 @@ public:
             switch (events.ExecuteEvent())
             {
                 case EVENT_NEXT_WAVE:
-                    uiWaveCount++;
-                    AddWave();
+						if(events.GetTimer() >= 8000){
+							uiWaveCount++;
+							AddWave();
+						}
                     break;
-                case EVENT_START_LICH_KING:                   
-
+                case EVENT_START_LICH_KING:
                     break;
             }
         }

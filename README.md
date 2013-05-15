@@ -9,13 +9,12 @@ Wintergrasp functionality: 98%
   - TODO: Fix seat error, when you get out of vehicle 
 
 
-Halls of Reflection functionality: 90%
+Halls of Reflection functionality: 99%
   - Waves spawning
   - Ice Walls break
   - Ice Wall Waves spawning
   - Ship at End spawning
-  - 
-  - TODO: Fix Wave spawning Times
+  - Wave Spawning Times fixed
   
 
 Trial of the Champions functionality: 50%

@@ -205,7 +205,7 @@ public:
     }
     bool OnGossipHello(Player* player, Creature* creature)
     {
-        player->ADD_GOSSIP_ITEM( 0, "Kannst du das Schwert entfernen?", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
+        player->ADD_GOSSIP_ITEM( 0, "Can you remove the sword?", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
         player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
 
         return true;
@@ -1252,7 +1252,7 @@ public:
 
 enum Defs
 {
-    SAY_LICH_KING_AGGRO_A  = 0,
+    SAY_LICH_KING_AGGRO_A    = 0,
     SAY_LICH_KING_AGGRO_H	= 1,
     SAY_LICH_KING_WALL_02	= 3,
     SAY_LICH_KING_WALL_03	= 4,
@@ -1347,7 +1347,7 @@ public:
         if (creature->isQuestGiver())
                player->PrepareQuestMenu( creature->GetGUID());
 
-        player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Wir sind bereit!", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
+        player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "We are ready!", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
 
         player->SEND_GOSSIP_MENU(player->GetGossipTextId(creature), creature->GetGUID());
 
@@ -1901,7 +1901,7 @@ public:
                         if (_lichKing && _lichKing->isAlive())
                         {
                                _lichKing->RemoveAurasDueToSpell(SPELL_WINTER);
-                               _lichKing->SetSpeed(MOVE_WALK, 5f, true); //Lichi walking like ugly man, increased from 2.5
+                               _lichKing->SetSpeed(MOVE_WALK, 2.5f, true);
                                _step_doCount = 0;
                         }
                         break;

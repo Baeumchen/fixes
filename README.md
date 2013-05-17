@@ -18,6 +18,8 @@ Halls of Reflection functionality: 99%
   
 
 Trial of the Champions functionality: 50%
+(This will be completely rewritten, if i have time for that!) 
+
   - Todo: Fix un attackable Mob
   - Todo: Fix Lich King spawn
   

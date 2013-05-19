@@ -349,7 +349,7 @@ public:
         void SetData(uint32 type, uint32 data)
         {
             if (type == DATA_WAVE_COUNT && data == SPECIAL)
-    		{
+			{
 				uiWaveCount == 0;
 				bIntroDone = true;
 				CloseDoor(uiFrontDoor);
@@ -426,12 +426,12 @@ public:
                         if (GameObject *pPortal = instance->GetGameObject(uiPortal))
                                pPortal->SetPhaseMask(1, true);
 
-                        //ToDo Complete Achievement ACHIEV_HALLS_OF_REFLECTION_N
+						DoCompleteAchievement(ACHIEV_HALLS_OF_REFLECTION_N);
                         if (instance->IsHeroic())
                         {
-                        //ToDo Complete Achievement(ACHIEV_HALLS_OF_REFLECTION_H);
-                               DoCastSpellOnPlayers(SPELL_ACHIEV_CHECK);
-                               DoStopTimedAchievement(ACHIEVEMENT_TIMED_TYPE_EVENT, ACHIEV_NOT_RETREATING_EVENT);
+							DoCompleteAchievement(ACHIEV_HALLS_OF_REFLECTION_H);
+							DoCastSpellOnPlayers(SPELL_ACHIEV_CHECK);
+							DoStopTimedAchievement(ACHIEVEMENT_TIMED_TYPE_EVENT, ACHIEV_NOT_RETREATING_EVENT);
                         }
                     }
                     break;

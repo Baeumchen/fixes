@@ -1,31 +1,19 @@
 fixes
 =====
 
-Wintergrasp functionality: 98% 
+Wintergrasp functionality: 98% //This is not tested with the actual TC.. 
+I don't know, how wintergrasp works on tc and if it does acutally need fixes... 
   - Tower ist destroyable
   - You can construct vehicles
   - No despawning Walls
-  - 
-  - TODO: Fix seat error, when you get out of vehicle 
 
 
-Halls of Reflection functionality: 99%
-  - Waves spawning
-  - Ice Walls break
-  - Ice Wall Waves spawning
-  - Ship at End spawning
-  - Wave Spawning Times fixed
+Halls of Reflection functionality: OUTDATED! HOR is now Part of TrinityCore and works fine!
   
 
-Trial of the Champions functionality: 50%
-(This will be completely rewritten, if i have time for that!) 
-
+Trial of the Champions functionality: //Will be rewritten in the future! Use at own risk! 
   - Todo: Fix un attackable Mob
   - Todo: Fix Lich King spawn
-  
 
-
-There's a guy named janja96 (https://github.com/janja96) who is just copying scripts and than update readme and 
-changes the "Edited by" Notes to his Name.. Notice: I don't know him and he did da fuq all! 
 
 These fixes are now under Copyright 2013 by Baeumchen and Toba015!
